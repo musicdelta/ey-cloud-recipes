@@ -39,6 +39,10 @@ require_recipe "redis"
 
 require_recipe "mongodb"
 
+require_recipe "ffmpeg"
+
+require_recipe "libquicktime"
+
 require_recipe "ecasound"
 
 #require_recipe "logrotate"
