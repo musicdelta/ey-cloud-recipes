@@ -1,0 +1,28 @@
+dev tun
+server <%= node["openvpn"]["subnet"] %> <%= node["openvpn"]["netmask"] %>
+client-to-client
+port <%= node["openvpn"]["port"] %>
+proto tcp-server
+keepalive 10 120
+comp-lzo
+local <%= node["openvpn"]["local"] %>
+
+ca       <%= node["openvpn"]["key_dir"] %>/ca.crt
+dh       <%= node["openvpn"]["key_dir"] %>/dh1024.pem
+tls-auth <%= node["openvpn"]["key_dir"] %>/ta.key 0
+key      <%= node["openvpn"]["key_dir"] %>/server.key # This file should be kept secret. 
+cert     <%= node["openvpn"]["key_dir"] %>/server.crt
+
+cipher DES-EDE3-CBC
+
+user nobody
+group nogroup
+
+persist-key
+persist-tun
+
+status /etc/openvpn/openvpn-status.log
+
+log-append  <%= node["openvpn"]["log"] %>
+verb 1
+mute 10
