@@ -40,15 +40,15 @@ end
   end
 end
 
+service "openvpn.server" do
+  action [:enable, :start]
+end
+
 template "/etc/openvpn/server.conf" do
   source "server.conf.erb"
   owner "root"
   group "root"
   mode 0644
   notifies :restart, resources(:service => "openvpn.server"), :immediate
-end
-
-service "openvpn.server" do
-  action [:enable, :start]
 end
 
