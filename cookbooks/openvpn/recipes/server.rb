@@ -28,8 +28,8 @@ file "#{key_dir}/index.txt" do
   action :create
 end
 
-file "#{key_dir}/serial" do
-  content "01"
+execute "setup #{key_dir}/serial" do
+  command "echo '01' > #{key_dir}/serial"
   not_if { ::File.exists?("#{key_dir}/serial") }
 end
 
