@@ -40,7 +40,7 @@ end
 end
 
 service "openvpn.server-client" do
-  action [:enable, :start]
+  action [:enable]
 end
 
 template "/etc/openvpn/server-client.conf" do
@@ -48,6 +48,6 @@ template "/etc/openvpn/server-client.conf" do
   owner "root"
   group "root"
   mode 0644
-  notifies :restart, resources(:service => "openvpn.server-client"), :immediate
+  notifies :start, resources(:service => "openvpn.server-client"), :immediate
 end
 
