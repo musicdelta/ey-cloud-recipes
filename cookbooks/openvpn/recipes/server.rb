@@ -45,7 +45,7 @@ template "/etc/openvpn/server.conf" do
   owner "root"
   group "root"
   mode 0644
-  notifies :restart, "service[openvpn.server]"
+  notifies :restart, resources(:service => "openvpn.server"), :immediate
 end
 
 service "openvpn.server" do
