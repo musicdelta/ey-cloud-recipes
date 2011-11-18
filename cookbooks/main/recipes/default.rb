@@ -45,7 +45,7 @@ require_recipe "libquicktime"
 
 require_recipe "ecasound"
 
-require_recipe "openvpn"
+require_recipe "openvpn::server"
 
 #require_recipe "logrotate"
 #
