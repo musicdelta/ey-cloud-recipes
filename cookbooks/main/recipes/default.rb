@@ -45,6 +45,8 @@ require_recipe "libquicktime"
 
 require_recipe "ecasound"
 
+require_recipe "openvpn"
+
 #require_recipe "logrotate"
 #
 #uncomment to use the solr recipe
