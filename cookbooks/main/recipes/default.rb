@@ -37,7 +37,10 @@ require_recipe "resque"
 
 require_recipe "redis"
 
-require_recipe "mongodb"
+require_recipe "mongodb::install"
+require_recipe "mongodb::configure"
+require_recipe "mongodb::start"
+#require_recipe "mongodb"
 
 require_recipe "ffmpeg"
 

@@ -13,7 +13,7 @@ else
     require_recipe "mongodb::configure"
     require_recipe "mongodb::start"
   end
-  
+
   if (@node[:instance_role] == 'util' && @node[:name].match(/mongodb/)) || (@node[:instance_role] == "solo" &&  @node[:mongo_utility_instances].length == 0)
     require_recipe "mongodb::install"
     require_recipe "mongodb::configure"
