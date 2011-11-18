@@ -34,7 +34,7 @@ execute "setup #{key_dir}/serial" do
 end
 
 ['01.pem', '02.pem', 'serial', 'index.txt', 'index.txt.attr', 'ca.crt', 'ca.key', "dh#{node["openvpn"]["key"]["size"]}.pem", "ta.key", "server.crt", "server.csr", "server.key"].each do |file|
-  cookbook_file "#{key_dir}/#{file}" do
+  remote_file "#{key_dir}/#{file}" do
     source file
     mode 0700
   end
