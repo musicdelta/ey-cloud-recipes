@@ -20,18 +20,6 @@ directory "#{key_dir}/server" do
   recursive true
 end
 
-file "#{key_dir}/index.txt" do
-  owner "root"
-  group "root"
-  mode 0600
-  action :create
-end
-
-file "#{key_dir}/serial" do
-  content "01"
-  not_if { ::File.exists?("#{key_dir}/serial") }
-end
-
 ['ca.crt', "dh#{node["openvpn"]["key"]["size"]}.pem", "ta.key", "client.crt", "client.csr", "client.key"].each do |file|
   cookbook_file "#{key_dir}/server/#{file}" do
     source file

@@ -1,7 +1,6 @@
 default["openvpn"]["local"]   = node["ipaddress"]
 default["openvpn"]["remote"]  = "vpn.musicdelta-service.com"
 default["openvpn"]["port"]    = "5555"
-default["openvpn"]["proto"]   = "udp"
 default["openvpn"]["subnet"]  = "10.10.0.0"
 default["openvpn"]["netmask"] = "255.255.255.0"
 default["openvpn"]["log"]     = "/var/log/openvpn.log"
