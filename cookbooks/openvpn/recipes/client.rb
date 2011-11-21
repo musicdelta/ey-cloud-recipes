@@ -21,10 +21,14 @@ directory "#{key_dir}/server" do
 end
 
 ['ca.crt', "dh#{node["openvpn"]["key"]["size"]}.pem", "ta.key", "client.crt", "client.csr", "client.key"].each do |file|
-  cookbook_file "#{key_dir}/server/#{file}" do
+  remote_file "#{key_dir}/server/#{file}" do
     source file
     mode 0700
   end
+end
+
+service "openvpn.server-client" do
+  action [:enable]
 end
 
 template "/etc/openvpn/server-client.conf" do
@@ -32,9 +36,6 @@ template "/etc/openvpn/server-client.conf" do
   owner "root"
   group "root"
   mode 0644
-  notifies :restart, "service[openvpn.server-client]"
+  notifies :start, resources(:service => "openvpn.server-client"), :immediate
 end
 
-service "openvpn.server-client" do
-  action [:enable, :start]
-end

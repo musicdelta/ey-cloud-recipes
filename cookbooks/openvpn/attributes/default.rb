@@ -1,19 +1,6 @@
-default["openvpn"]["local"]   = node["ipaddress"]
-default["openvpn"]["remote"]  = "vpn.musicdelta-service.com"
-default["openvpn"]["port"]    = "5555"
-default["openvpn"]["subnet"]  = "10.10.0.0"
-default["openvpn"]["netmask"] = "255.255.255.0"
-default["openvpn"]["log"]     = "/var/log/openvpn.log"
-default["openvpn"]["key_dir"] = "/etc/openvpn/server/keys"
-default["openvpn"]["signing_ca_key"]  = "#{node["openvpn"]["key_dir"]}/ca.key"
-default["openvpn"]["signing_ca_cert"] = "#{node["openvpn"]["key_dir"]}/ca.crt"
-
-# Used by helper library to generate certificates/keys
-default["openvpn"]["key"]["ca_expire"] = 3650
-default["openvpn"]["key"]["expire"]    = 3650
-default["openvpn"]["key"]["size"]      = 1024
-default["openvpn"]["key"]["country"]   = "US"
-default["openvpn"]["key"]["province"]  = "CA"
-default["openvpn"]["key"]["city"]      = "SanFrancisco"
-default["openvpn"]["key"]["org"]       = "Fort-Funston"
-default["openvpn"]["key"]["email"]     = "me@example.com"
+openvpn :local => "0.0.0.0", :remote => "service.musicdelta-demo.com", :port => "5555", :proto => "udp",
+        :subnet => "10.10.0.0", :netmask => "255.255.255.0", :log => "/var/log/openvpn.log",
+        :key_dir => "/etc/openvpn/server/keys", :signing_ca_key => "/etc/openvpn/server/keys/ca.key",
+        :signing_ca_cert => "/etc/openvpn/server/keys/ca.crt",
+        :key => {:ca_expire => 3650, :expire => 3650, :size => 1024, :country => "US", :province => " CA ",
+                 :city => "SanFrancisco", :org => " Fort-Funston ", :email => "me@example.com"}

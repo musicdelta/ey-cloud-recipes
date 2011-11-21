@@ -28,16 +28,20 @@ file "#{key_dir}/index.txt" do
   action :create
 end
 
-file "#{key_dir}/serial" do
-  content "01"
+execute "setup #{key_dir}/serial" do
+  command "echo '01' > #{key_dir}/serial"
   not_if { ::File.exists?("#{key_dir}/serial") }
 end
 
 ['01.pem', '02.pem', 'serial', 'index.txt', 'index.txt.attr', 'ca.crt', 'ca.key', "dh#{node["openvpn"]["key"]["size"]}.pem", "ta.key", "server.crt", "server.csr", "server.key"].each do |file|
-  cookbook_file "#{key_dir}/#{file}" do
+  remote_file "#{key_dir}/#{file}" do
     source file
     mode 0700
   end
+end
+
+service "openvpn.server" do
+  action [:enable, :start]
 end
 
 template "/etc/openvpn/server.conf" do
@@ -45,10 +49,6 @@ template "/etc/openvpn/server.conf" do
   owner "root"
   group "root"
   mode 0644
-  notifies :restart, "service[openvpn.server]"
-end
-
-service "openvpn.server" do
-  action [:enable, :start]
+  notifies :restart, resources(:service => "openvpn.server"), :immediate
 end
 

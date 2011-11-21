@@ -37,13 +37,18 @@ require_recipe "resque"
 
 require_recipe "redis"
 
-require_recipe "mongodb"
+require_recipe "mongodb::install"
+require_recipe "mongodb::configure"
+require_recipe "mongodb::start"
+#require_recipe "mongodb"
 
 require_recipe "ffmpeg"
 
 require_recipe "libquicktime"
 
 require_recipe "ecasound"
+
+require_recipe "openvpn::server"
 
 #require_recipe "logrotate"
 #

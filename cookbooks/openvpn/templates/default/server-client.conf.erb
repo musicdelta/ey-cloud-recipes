@@ -1,20 +1,20 @@
 dev tun
 client
-port <%= node["openvpn"]["port"] %>
+port <%= @node["openvpn"]["port"] %>
 proto tcp-client
 comp-lzo
-remote <%= node["openvpn"]["remote"] %>
-cd <%= node["openvpn"]["key_dir"] %>
+remote <%= @node["openvpn"]["remote"] %>
+cd <%= @node["openvpn"]["key_dir"] %>
 
 # Keys and certificates.
-ca       <%= node["openvpn"]["key_dir"] %>/server/ca.crt
-dh       <%= node["openvpn"]["key_dir"] %>/server/dh1024.pem
-tls-auth <%= node["openvpn"]["key_dir"] %>/server/ta.key 1
-key      <%= node["openvpn"]["key_dir"] %>/server/client.key
-cert     <%= node["openvpn"]["key_dir"] %>/server/client.crt
+ca       <%= @node["openvpn"]["key_dir"] %>/server/ca.crt
+dh       <%= @node["openvpn"]["key_dir"] %>/server/dh1024.pem
+tls-auth <%= @node["openvpn"]["key_dir"] %>/server/ta.key 1
+key      <%= @node["openvpn"]["key_dir"] %>/server/client.key
+cert     <%= @node["openvpn"]["key_dir"] %>/server/client.crt
 
 cipher DES-EDE3-CBC
 
-log-append  <%= node["openvpn"]["log"] %>
+log-append  <%= @node["openvpn"]["log"] %>
 verb 1
 mute 10

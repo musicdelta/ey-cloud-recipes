@@ -16,7 +16,7 @@
 #end
 
 
-app_version = "ffmpeg-0.8.5"
+app_version = "ffmpeg-0.8.6"
 file_to_fetch = "http://ffmpeg.org/releases/#{app_version}.tar.bz2"
 
 package 'dev-lang/yasm' do
