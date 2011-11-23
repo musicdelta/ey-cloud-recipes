@@ -51,7 +51,7 @@ tunnel_vars = {
 
 remote_file private_key do
   source 'id_rsa'
-  owner 'vagrant'
+  owner node[:owner_name]
 end
 
 # set this to match on the node[:instance_role] of the instance the tunnel
