@@ -14,10 +14,10 @@ private_key = "/home/#{node[:owner_name]}/.ssh/id_rsa_tunnel"
 # fill in missing information below
 tunnel_vars = {
   # the host hostname (an IP will work) to ssh to
-  :ssh_hostname => 'mongo.musicdelta-demo.com',
+  :ssh_hostname => node[:ssh_tunnel][:ssh][:hostname],
   # only change this if using a non-default ssh port on the destination host,
   # such as when connecting through a gateway
-  :ssh_port => 22,
+  :ssh_port => node[:ssh_tunnel][:ssh][:port],
   # the system user account to use when logging into the destination host
   :ssh_user => node[:owner_name],
   # the path to the private key on the instance the tunnel is from
@@ -25,12 +25,12 @@ tunnel_vars = {
   # the path to the public key on the instance the tunnel is from
   :ssh_public_key => '',
   # the port that will be being forwarded
-  :connect_port => '27017',
+  :connect_port => node[:ssh_tunnel][:connect_port],
   # the host on the remote side (or local side for a reverse tunnel) 
   # that the :connect_port will be forwarded to
-  :forward_host => node['ssh_tunnel']['host'],
+  :forward_host => node[:ssh_tunnel][:forward][:host],
   # the port on :forward_host that :connect_port will be forwarded to
-  :forward_port => node['ssh_tunnel']['port'],
+  :forward_port => node[:ssh_tunnel][:forward][:port],
   # valid values: FWD, REV, DUAL. Determines what kind of tunnel(s) to create
   # DUAL means create both a forward and reverse tunnel
   :tunnel_direction => '', 
