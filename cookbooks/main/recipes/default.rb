@@ -50,6 +50,9 @@ require_recipe "ecasound"
 
 require_recipe "ssh_tunnel::server"
 
+#node[:ssh_tunnel][:connect_port] = 27018
+#require_recipe "ssh_tunnel"
+
 #require_recipe "logrotate"
 #
 #uncomment to use the solr recipe
