@@ -42,13 +42,13 @@ require_recipe "mongodb::configure"
 require_recipe "mongodb::start"
 #require_recipe "mongodb"
 
-require_recipe "ffmpeg"
+#require_recipe "ffmpeg"
+#
+#require_recipe "libquicktime"
+#
+#require_recipe "ecasound"
 
-require_recipe "libquicktime"
-
-require_recipe "ecasound"
-
-require_recipe "ssh_tunnel::server"
+#require_recipe "ssh_tunnel::server"
 
 #node[:ssh_tunnel][:connect_port] = 27018
 #require_recipe "ssh_tunnel"
