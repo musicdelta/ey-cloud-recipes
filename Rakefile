@@ -44,7 +44,7 @@ end
 
 desc "Apply and upload recipes to EY"
 task :upload do
-  ey_env = ENV["E"] || "delta_karaoke_prod"
+  ey_env = ENV["E"] || "delta_staging"
   sh "ey recipes upload -e #{ey_env}"
   sh "ey recipes apply -e #{ey_env}"
   sh "ey rebuild -e #{ey_env}"
