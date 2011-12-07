@@ -50,7 +50,7 @@ require_recipe "mongodb::start"
 #require_recipe "ssh_tunnel::server"
 
 #node[:ssh_tunnel][:connect_port] = 27018
-#require_recipe "ssh_tunnel"
+require_recipe "ssh_tunnel"
 
 #require_recipe "logrotate"
 #
